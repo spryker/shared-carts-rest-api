@@ -15,7 +15,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
  * @method \Spryker\Zed\SharedCartsRestApi\Business\SharedCartsRestApiBusinessFactory getFactory()
- * @method \Spryker\Zed\SharedCartsRestApi\Persistence\SharedCartsRestApiEntityManagerInterface getEntityManager()
  */
 class SharedCartsRestApiFacade extends AbstractFacade implements SharedCartsRestApiFacadeInterface
 {

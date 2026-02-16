@@ -24,7 +24,6 @@ use Spryker\Zed\SharedCartsRestApi\SharedCartsRestApiDependencyProvider;
 
 /**
  * @method \Spryker\Zed\SharedCartsRestApi\SharedCartsRestApiConfig getConfig()
- * @method \Spryker\Zed\SharedCartsRestApi\Persistence\SharedCartsRestApiEntityManager getEntityManager()
  */
 class SharedCartsRestApiBusinessFactory extends AbstractBusinessFactory
 {
