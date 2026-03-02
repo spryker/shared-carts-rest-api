@@ -23,19 +23,11 @@ class SharedCartUpdater implements SharedCartUpdaterInterface
      */
     protected $sharedCartFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
-     */
     public function __construct(SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade)
     {
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function update(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         $shareCartResponseTransfer = (new ShareCartResponseTransfer())->setIsSuccessful(false);
@@ -81,23 +73,11 @@ class SharedCartUpdater implements SharedCartUpdaterInterface
             ->setShareDetails($shareCartResponseTransfer->getShareDetails());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return bool
-     */
     protected function canManageQuoteSharing(QuoteTransfer $quoteTransfer, ShareCartRequestTransfer $shareCartRequestTransfer): bool
     {
         return $quoteTransfer->getCustomerReference() === $shareCartRequestTransfer->getCustomerReference();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer
-     */
     protected function createShareDetailCriteriaFilterTransfer(
         QuoteTransfer $quoteTransfer,
         QuoteCompanyUserTransfer $quoteCompanyUserTransfer

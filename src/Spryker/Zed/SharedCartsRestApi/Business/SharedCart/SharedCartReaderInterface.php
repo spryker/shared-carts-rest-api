@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ShareDetailCollectionTransfer;
 
 interface SharedCartReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getSharedCartsByCartUuid(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer;
 }

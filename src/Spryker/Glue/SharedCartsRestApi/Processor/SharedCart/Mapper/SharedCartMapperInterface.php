@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\ShareDetailTransfer;
 
 interface SharedCartMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     * @param \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer
-     */
     public function mapShareDetailTransferToRestSharedCartsAttributesTransfer(
         ShareDetailTransfer $shareDetailTransfer,
         RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer

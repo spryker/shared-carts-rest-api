@@ -14,17 +14,11 @@ use Spryker\Client\SharedCartsRestApi\Zed\SharedCartsRestApiStubInterface;
 
 class SharedCartsRestApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\SharedCartsRestApi\Zed\SharedCartsRestApiStubInterface
-     */
     public function createSharedCartsRestApiStub(): SharedCartsRestApiStubInterface
     {
         return new SharedCartsRestApiStub($this->getZedRequestClient());
     }
 
-    /**
-     * @return \Spryker\Client\SharedCartsRestApi\Dependency\Client\SharedCartsRestApiToZedRequestClientInterface
-     */
     public function getZedRequestClient(): SharedCartsRestApiToZedRequestClientInterface
     {
         return $this->getProvidedDependency(SharedCartsRestApiDependencyProvider::CLIENT_ZED_REQUEST);

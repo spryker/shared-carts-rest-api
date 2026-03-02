@@ -102,9 +102,6 @@ class SharedCartsRestApiFacadeTest extends Unit
      */
     protected $readOnlyQuotePermissionGroup;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -130,9 +127,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->tester->setPermissionDependencies();
     }
 
-    /**
-     * @return void
-     */
     public function testGetSharedCartsByCartUuidShouldReturnShareData(): void
     {
         // Assign
@@ -174,9 +168,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertEquals($this->readOnlyQuotePermissionGroup->getIdQuotePermissionGroup(), $shareDetailTransfer->getQuotePermissionGroup()->getIdQuotePermissionGroup());
     }
 
-    /**
-     * @return void
-     */
     public function testGetSharedCartsByCartUuidShouldFailOnNoCartUuidProvided(): void
     {
         // Assign
@@ -188,9 +179,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $sharedCartsRestApiFacade->getSharedCartsByCartUuid((new QuoteTransfer()));
     }
 
-    /**
-     * @return void
-     */
     public function testCreateShouldCreateQuoteCompanyUser(): void
     {
         //Arrange
@@ -218,9 +206,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertNotNull($shareDetailTransfer->getUuid());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateShouldReturnErrorIfQuoteNotFound(): void
     {
         //Arrange
@@ -244,9 +229,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_QUOTE_NOT_FOUND, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateShouldReturnErrorIfNoShareDetailsProvided(): void
     {
         $this->expectException(RequiredTransferPropertyException::class);
@@ -261,9 +243,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->tester->getFacade()->create($shareCartRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateShouldReturnErrorIfCustomerDoesNotOwnQuote(): void
     {
         //Arrange
@@ -287,9 +266,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_ACTION_FORBIDDEN, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShouldUpdateQuotePermissionGroupForQuoteCompanyUser(): void
     {
         //Arrange
@@ -326,9 +302,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertNotNull($shareDetailTransfer->getUuid());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShouldReturnErrorIfQuoteCompanyUserNotFound(): void
     {
         //Arrange
@@ -355,9 +328,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_SHARED_CART_NOT_FOUND, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShouldReturnErrorIfCustomerDoesNotOwnQuote(): void
     {
         //Arrange
@@ -390,9 +360,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_ACTION_FORBIDDEN, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteShouldDeleteQuoteCompanyUser(): void
     {
         //Arrange
@@ -419,9 +386,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertNull($shareDetailCollectionTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteShouldReturnErrorIfQuoteCompanyUserNotFound(): void
     {
         //Arrange
@@ -439,9 +403,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_SHARED_CART_NOT_FOUND, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteShouldReturnErrorIfCustomerDoesNotOwnQuote(): void
     {
         //Arrange
@@ -465,17 +426,11 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertSame(SharedCartsRestApiConfig::ERROR_IDENTIFIER_ACTION_FORBIDDEN, $shareCartResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCart\Business\SharedCartFacadeInterface
-     */
     protected function getSharedCartFacade(): SharedCartFacadeInterface
     {
         return $this->tester->getLocator()->sharedCart()->facade();
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteWithQuotePermissionGroupSuccessfullyExpandsQuote(): void
     {
         // Assign
@@ -504,9 +459,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteWithQuotePermissionGroupShouldDoNothingIfCustomerIsNotCompanyUser(): void
     {
         // Assign
@@ -531,9 +483,6 @@ class SharedCartsRestApiFacadeTest extends Unit
         $this->assertNull($quoteTransfer->getQuotePermissionGroup());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteWithQuotePermissionGroupShouldDoNothingIfCustomerIsCartOwner(): void
     {
         // Assign

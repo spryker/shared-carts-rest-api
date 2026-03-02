@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ShareCartResponseTransfer;
 
 interface SharedCartCreatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function create(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer;
 }

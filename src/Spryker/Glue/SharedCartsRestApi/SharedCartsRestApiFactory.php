@@ -28,9 +28,6 @@ use Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProvid
  */
 class SharedCartsRestApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\Relationship\SharedCartByCartIdExpanderInterface
-     */
     public function createSharedCartByCartIdExpander(): SharedCartByCartIdExpanderInterface
     {
         return new SharedCartByCartIdExpander(
@@ -40,9 +37,6 @@ class SharedCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\SharedCartCreatorInterface
-     */
     public function createSharedCartCreator(): SharedCartCreatorInterface
     {
         return new SharedCartCreator(
@@ -52,9 +46,6 @@ class SharedCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\SharedCartUpdaterInterface
-     */
     public function createSharedCartUpdater(): SharedCartUpdaterInterface
     {
         return new SharedCartUpdater(
@@ -63,9 +54,6 @@ class SharedCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\SharedCartDeleterInterface
-     */
     public function createSharedCartDeleter(): SharedCartDeleterInterface
     {
         return new SharedCartDeleter(
@@ -74,9 +62,6 @@ class SharedCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\RestResponseBuilder\SharedCartRestResponseBuilderInterface
-     */
     public function createSharedCartRestResponseBuilder(): SharedCartRestResponseBuilderInterface
     {
         return new SharedCartRestResponseBuilder(
@@ -86,17 +71,11 @@ class SharedCartsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\Mapper\SharedCartMapperInterface
-     */
     public function createSharedCartMapper(): SharedCartMapperInterface
     {
         return new SharedCartMapper();
     }
 
-    /**
-     * @return \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface
-     */
     public function getCompanyUserProviderPlugin(): CompanyUserProviderPluginInterface
     {
         return $this->getProvidedDependency(SharedCartsRestApiDependencyProvider::PLUGIN_COMPANY_USER_PROVIDER);

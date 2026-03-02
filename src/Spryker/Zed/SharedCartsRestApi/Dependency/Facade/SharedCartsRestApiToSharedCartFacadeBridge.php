@@ -31,71 +31,36 @@ class SharedCartsRestApiToSharedCartFacadeBridge implements SharedCartsRestApiTo
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function createQuoteCompanyUser(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         return $this->sharedCartFacade->createQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailsByIdQuote(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         return $this->sharedCartFacade->getShareDetailsByIdQuote($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $quotePermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuotePermissionGroupResponseTransfer
-     */
     public function findQuotePermissionGroupById(QuotePermissionGroupTransfer $quotePermissionGroupTransfer): QuotePermissionGroupResponseTransfer
     {
         return $this->sharedCartFacade->findQuotePermissionGroupById($quotePermissionGroupTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return void
-     */
     public function deleteQuoteCompanyUser(ShareCartRequestTransfer $shareCartRequestTransfer): void
     {
         $this->sharedCartFacade->deleteQuoteCompanyUser($shareCartRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function updateQuoteCompanyUserPermissionGroup(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         return $this->sharedCartFacade->updateQuoteCompanyUserPermissionGroup($shareCartRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer|null
-     */
     public function findQuoteCompanyUserByUuid(QuoteCompanyUserTransfer $quoteCompanyUserTransfer): ?QuoteCompanyUserTransfer
     {
         return $this->sharedCartFacade->findQuoteCompanyUserByUuid($quoteCompanyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailCollectionByShareDetailCriteria(
         ShareDetailCriteriaFilterTransfer $shareDetailCriteriaFilterTransfer
     ): ShareDetailCollectionTransfer {

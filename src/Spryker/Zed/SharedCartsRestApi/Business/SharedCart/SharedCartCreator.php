@@ -30,10 +30,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
      */
     protected $sharedCartFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToQuoteFacadeInterface $quoteFacade
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
-     */
     public function __construct(
         SharedCartsRestApiToQuoteFacadeInterface $quoteFacade,
         SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
@@ -42,11 +38,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function create(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         $shareCartResponseTransfer = (new ShareCartResponseTransfer())->setIsSuccessful(false);
@@ -105,23 +96,11 @@ class SharedCartCreator implements SharedCartCreatorInterface
         return $shareCartResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return bool
-     */
     protected function canManageQuoteSharing(QuoteTransfer $quoteTransfer, ShareCartRequestTransfer $shareCartRequestTransfer): bool
     {
         return $quoteTransfer->getCustomerReference() === $shareCartRequestTransfer->getCustomerReference();
     }
 
-    /**
-     * @param int $idQuote
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteCompanyUserTransfer
-     */
     protected function createQuoteCompanyUserTransfer(int $idQuote, ShareDetailTransfer $shareDetailTransfer): QuoteCompanyUserTransfer
     {
         $quoteCompanyUserTransfer = (new QuoteCompanyUserTransfer())
@@ -132,12 +111,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
         return $quoteCompanyUserTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\QuoteCompanyUserTransfer $quoteCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCriteriaFilterTransfer
-     */
     protected function createShareDetailCriteriaFilterTransfer(
         QuoteTransfer $quoteTransfer,
         QuoteCompanyUserTransfer $quoteCompanyUserTransfer

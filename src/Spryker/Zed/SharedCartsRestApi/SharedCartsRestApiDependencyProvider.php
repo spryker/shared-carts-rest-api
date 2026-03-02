@@ -27,11 +27,6 @@ class SharedCartsRestApiDependencyProvider extends AbstractBundleDependencyProvi
      */
     public const FACADE_SHARED_CART = 'FACADE_SHARED_CART';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -41,11 +36,6 @@ class SharedCartsRestApiDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addQuoteFacade(Container $container): Container
     {
         $container->set(static::FACADE_QUOTE, function (Container $container) {
@@ -57,11 +47,6 @@ class SharedCartsRestApiDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addSharedCartFacade(Container $container): Container
     {
         $container->set(static::FACADE_SHARED_CART, function (Container $container) {

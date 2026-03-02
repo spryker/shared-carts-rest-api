@@ -36,11 +36,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
      */
     protected $companyUserProviderPlugin;
 
-    /**
-     * @param \Spryker\Client\SharedCartsRestApi\SharedCartsRestApiClientInterface $sharedCartsRestApiClient
-     * @param \Spryker\Glue\SharedCartsRestApi\Processor\RestResponseBuilder\SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder
-     * @param \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface $companyUserProviderPlugin
-     */
     public function __construct(
         SharedCartsRestApiClientInterface $sharedCartsRestApiClient,
         SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder,
@@ -51,12 +46,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
         $this->companyUserProviderPlugin = $companyUserProviderPlugin;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function create(
         RestRequestInterface $restRequest,
         RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
@@ -95,11 +84,6 @@ class SharedCartCreator implements SharedCartCreatorInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected function provideCompanyUser(RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer): CompanyUserTransfer
     {
         $companyUserTransfer = (new CompanyUserTransfer())
@@ -108,25 +92,11 @@ class SharedCartCreator implements SharedCartCreatorInterface
         return $this->companyUserProviderPlugin->provideCompanyUser($companyUserTransfer);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return bool
-     */
     protected function canManageQuoteSharing(RestRequestInterface $restRequest, CompanyUserTransfer $companyUserTransfer): bool
     {
         return $companyUserTransfer->getFkCompany() === $restRequest->getRestUser()->getIdCompany();
     }
 
-    /**
-     * @param string $quoteUuid
-     * @param string $customerReference
-     * @param int $idCompanyUser
-     * @param int $idPermissionGroup
-     *
-     * @return \Generated\Shared\Transfer\ShareCartRequestTransfer
-     */
     protected function createShareCartRequestTransfer(
         string $quoteUuid,
         string $customerReference,

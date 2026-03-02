@@ -17,19 +17,11 @@ class QuotePermissionGroupReader implements QuotePermissionGroupReaderInterface
      */
     protected $sharedCartFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
-     */
     public function __construct(SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade)
     {
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandQuoteWithQuotePermissionGroup(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         if (!$this->isQuoteExpandable($quoteTransfer)) {
@@ -48,11 +40,6 @@ class QuotePermissionGroupReader implements QuotePermissionGroupReaderInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteExpandable(QuoteTransfer $quoteTransfer): bool
     {
         return $quoteTransfer->getCustomerReference() !== $quoteTransfer->getCustomer()->getCustomerReference()

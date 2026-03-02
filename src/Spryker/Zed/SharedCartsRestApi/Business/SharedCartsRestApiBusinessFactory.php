@@ -27,9 +27,6 @@ use Spryker\Zed\SharedCartsRestApi\SharedCartsRestApiDependencyProvider;
  */
 class SharedCartsRestApiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Business\SharedCart\SharedCartReaderInterface
-     */
     public function createSharedCartReader(): SharedCartReaderInterface
     {
         return new SharedCartReader(
@@ -38,9 +35,6 @@ class SharedCartsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Business\SharedCart\SharedCartCreatorInterface
-     */
     public function createSharedCartCreator(): SharedCartCreatorInterface
     {
         return new SharedCartCreator(
@@ -49,41 +43,26 @@ class SharedCartsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Business\SharedCart\SharedCartUpdaterInterface
-     */
     public function createSharedCartUpdater(): SharedCartUpdaterInterface
     {
         return new SharedCartUpdater($this->getSharedCartFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Business\SharedCart\SharedCartDeleterInterface
-     */
     public function createSharedCartDeleter(): SharedCartDeleterInterface
     {
         return new SharedCartDeleter($this->getSharedCartFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Business\QuotePermissionGroup\QuotePermissionGroupReaderInterface
-     */
     public function createQuotePermissionGroupReader(): QuotePermissionGroupReaderInterface
     {
         return new QuotePermissionGroupReader($this->getSharedCartFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToQuoteFacadeInterface
-     */
     public function getQuoteFacade(): SharedCartsRestApiToQuoteFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartsRestApiDependencyProvider::FACADE_QUOTE);
     }
 
-    /**
-     * @return \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface
-     */
     public function getSharedCartFacade(): SharedCartsRestApiToSharedCartFacadeInterface
     {
         return $this->getProvidedDependency(SharedCartsRestApiDependencyProvider::FACADE_SHARED_CART);

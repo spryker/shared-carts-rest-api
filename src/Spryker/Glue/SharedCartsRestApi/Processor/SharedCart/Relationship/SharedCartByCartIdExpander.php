@@ -35,11 +35,6 @@ class SharedCartByCartIdExpander implements SharedCartByCartIdExpanderInterface
      */
     protected $restResourceBuilder;
 
-    /**
-     * @param \Spryker\Client\SharedCartsRestApi\SharedCartsRestApiClientInterface $sharedCartsRestApiClient
-     * @param \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\Mapper\SharedCartMapperInterface $sharedCartMapper
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     */
     public function __construct(
         SharedCartsRestApiClientInterface $sharedCartsRestApiClient,
         SharedCartMapperInterface $sharedCartMapper,
@@ -68,12 +63,6 @@ class SharedCartByCartIdExpander implements SharedCartByCartIdExpanderInterface
         }
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     * @param \Generated\Shared\Transfer\ShareDetailCollectionTransfer $shareDetailCollectionTransfer
-     *
-     * @return void
-     */
     protected function addSharedCartRelationships(
         RestResourceInterface $resource,
         ShareDetailCollectionTransfer $shareDetailCollectionTransfer
@@ -89,11 +78,6 @@ class SharedCartByCartIdExpander implements SharedCartByCartIdExpanderInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer $shareDetailTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     protected function createSharedCartRestResource(ShareDetailTransfer $shareDetailTransfer): RestResourceInterface
     {
         $restSharedCartsAttributesTransfer = $this->sharedCartMapper->mapShareDetailTransferToRestSharedCartsAttributesTransfer(

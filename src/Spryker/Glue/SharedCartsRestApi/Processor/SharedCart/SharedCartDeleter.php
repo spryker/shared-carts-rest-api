@@ -26,10 +26,6 @@ class SharedCartDeleter implements SharedCartDeleterInterface
      */
     protected $sharedCartRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Client\SharedCartsRestApi\SharedCartsRestApiClientInterface $sharedCartsRestApiClient
-     * @param \Spryker\Glue\SharedCartsRestApi\Processor\RestResponseBuilder\SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder
-     */
     public function __construct(
         SharedCartsRestApiClientInterface $sharedCartsRestApiClient,
         SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder
@@ -38,11 +34,6 @@ class SharedCartDeleter implements SharedCartDeleterInterface
         $this->sharedCartRestResponseBuilder = $sharedCartRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function delete(RestRequestInterface $restRequest): RestResponseInterface
     {
         $sharedCartUuid = $restRequest->getResource()->getId();
@@ -65,12 +56,6 @@ class SharedCartDeleter implements SharedCartDeleterInterface
         return $this->sharedCartRestResponseBuilder->createSharedCartRestResponse();
     }
 
-    /**
-     * @param string $shareCartUuid
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\ShareCartRequestTransfer
-     */
     protected function createShareCartRequestTransfer(string $shareCartUuid, string $customerReference): ShareCartRequestTransfer
     {
         $shareDetailTransfer = (new ShareDetailTransfer())

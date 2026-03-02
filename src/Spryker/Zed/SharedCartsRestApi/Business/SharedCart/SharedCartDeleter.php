@@ -21,19 +21,11 @@ class SharedCartDeleter implements SharedCartDeleterInterface
      */
     protected $sharedCartFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
-     */
     public function __construct(SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade)
     {
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function delete(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         $shareCartResponseTransfer = (new ShareCartResponseTransfer())->setIsSuccessful(false);
@@ -64,12 +56,6 @@ class SharedCartDeleter implements SharedCartDeleterInterface
         return $shareCartResponseTransfer->setIsSuccessful(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return bool
-     */
     protected function canManageQuoteSharing(QuoteTransfer $quoteTransfer, ShareCartRequestTransfer $shareCartRequestTransfer): bool
     {
         return $quoteTransfer->getCustomerReference() === $shareCartRequestTransfer->getCustomerReference();

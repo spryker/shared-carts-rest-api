@@ -34,11 +34,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
      */
     protected $sharedCartsRestApiConfig;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\SharedCartsRestApi\Processor\SharedCart\Mapper\SharedCartMapperInterface $sharedCartMapper
-     * @param \Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig $sharedCartsRestApiConfig
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         SharedCartMapperInterface $sharedCartMapper,
@@ -49,11 +44,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         $this->sharedCartsRestApiConfig = $sharedCartsRestApiConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareDetailTransfer|null $shareDetailTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createSharedCartRestResponse(?ShareDetailTransfer $shareDetailTransfer = null): RestResponseInterface
     {
         $restResponse = $this->restResourceBuilder->createRestResponse();
@@ -74,11 +64,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @param string $errorIdentifier
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createErrorResponseFromErrorIdentifier(string $errorIdentifier): RestResponseInterface
     {
         $errorMappingData = $this->sharedCartsRestApiConfig->getErrorIdentifierToRestErrorMapping();
@@ -91,9 +76,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
             ->addError($this->createRestErrorMessageFromErrorData($errorMappingData[$errorIdentifier]));
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCartIdMissingErrorResponse(): RestResponseInterface
     {
         return $this->createRestErrorResponse(
@@ -103,9 +85,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyUserNotFoundErrorResponse(): RestResponseInterface
     {
         return $this->createRestErrorResponse(
@@ -115,9 +94,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createSharingForbiddenErrorResponse(): RestResponseInterface
     {
         return $this->createRestErrorResponse(
@@ -127,9 +103,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createSharedCartIdMissingErrorResponse(): RestResponseInterface
     {
         return $this->createRestErrorResponse(
@@ -139,13 +112,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @param int $status
-     * @param string $code
-     * @param string $detail
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function createRestErrorResponse(int $status, string $code, string $detail): RestResponseInterface
     {
         $restErrorMessageTransfer = $this->createRestErrorMessageFromErrorData([
@@ -157,12 +123,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @param string $sharedCartUuid
-     * @param \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     protected function createRestSharedCartsResource(
         string $sharedCartUuid,
         RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
@@ -174,11 +134,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
         );
     }
 
-    /**
-     * @param string $errorIdentifier
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function createDefaultUnexpectedRestErrorMessage(string $errorIdentifier): RestErrorMessageTransfer
     {
         return (new RestErrorMessageTransfer())
@@ -186,11 +141,6 @@ class SharedCartRestResponseBuilder implements SharedCartRestResponseBuilderInte
             ->setDetail($errorIdentifier);
     }
 
-    /**
-     * @param array $errorData
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function createRestErrorMessageFromErrorData(array $errorData): RestErrorMessageTransfer
     {
         return (new RestErrorMessageTransfer())->fromArray($errorData);

@@ -69,9 +69,6 @@ class QuotePermissionGroupQuoteExpanderPluginTest extends Unit
      */
     protected $quoteTransfer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -97,9 +94,6 @@ class QuotePermissionGroupQuoteExpanderPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testQuotePermissionGroupQuoteExpanderPluginShouldExpandQuoteWithQuotePermissionGroup(): void
     {
         // Assign
@@ -116,9 +110,6 @@ class QuotePermissionGroupQuoteExpanderPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteWithQuotePermissionGroupShouldDoNothingIfCustomerIsNotCompanyUser(): void
     {
         // Assign
@@ -132,9 +123,6 @@ class QuotePermissionGroupQuoteExpanderPluginTest extends Unit
         $this->assertNull($quoteTransfer->getQuotePermissionGroup());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuoteWithQuotePermissionGroupShouldDoNothingIfCustomerIsCartOwner(): void
     {
         // Assign

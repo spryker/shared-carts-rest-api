@@ -28,10 +28,6 @@ class SharedCartUpdater implements SharedCartUpdaterInterface
      */
     protected $sharedCartRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Client\SharedCartsRestApi\SharedCartsRestApiClientInterface $sharedCartsRestApiClient
-     * @param \Spryker\Glue\SharedCartsRestApi\Processor\RestResponseBuilder\SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder
-     */
     public function __construct(
         SharedCartsRestApiClientInterface $sharedCartsRestApiClient,
         SharedCartRestResponseBuilderInterface $sharedCartRestResponseBuilder
@@ -40,12 +36,6 @@ class SharedCartUpdater implements SharedCartUpdaterInterface
         $this->sharedCartRestResponseBuilder = $sharedCartRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function update(RestRequestInterface $restRequest, RestSharedCartsAttributesTransfer $restSharedCartsAttributesTransfer): RestResponseInterface
     {
         $sharedCartUuid = $restRequest->getResource()->getId();
@@ -71,13 +61,6 @@ class SharedCartUpdater implements SharedCartUpdaterInterface
         );
     }
 
-    /**
-     * @param string $sharedCartUuid
-     * @param string $customerReference
-     * @param int $idPermissionGroup
-     *
-     * @return \Generated\Shared\Transfer\ShareCartRequestTransfer
-     */
     protected function createShareCartRequestTransfer(
         string $sharedCartUuid,
         string $customerReference,

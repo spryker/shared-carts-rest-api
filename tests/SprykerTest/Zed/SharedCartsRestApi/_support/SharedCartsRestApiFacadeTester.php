@@ -40,9 +40,6 @@ class SharedCartsRestApiFacadeTester extends Actor
 {
     use _generated\SharedCartsRestApiFacadeTesterActions;
 
-    /**
-     * @return void
-     */
     public function setPermissionDependencies(): void
     {
         $this->setDependency(PermissionDependencyProvider::PLUGINS_PERMISSION_STORAGE, [
@@ -57,11 +54,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         $this->getLocator()->permission()->facade()->syncPermissionPlugins();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function createCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
         $companyTransfer = $this->createCompany();
@@ -77,9 +69,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function createCompany(): CompanyTransfer
     {
         return $this->haveCompany(
@@ -92,11 +81,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     public function createCompanyBusinessUnit(CompanyTransfer $companyTransfer): CompanyBusinessUnitTransfer
     {
         return $this->haveCompanyBusinessUnit(
@@ -109,12 +93,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         );
     }
 
-    /**
-     * @param int $idCompanyUser
-     * @param \Generated\Shared\Transfer\QuotePermissionGroupTransfer $permissionQuoteGroup
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailTransfer
-     */
     public function createShareCartDetail(int $idCompanyUser, QuotePermissionGroupTransfer $permissionQuoteGroup): ShareDetailTransfer
     {
         $shareDetailTransfer = new ShareDetailTransfer();
@@ -124,11 +102,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         return $shareDetailTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function haveCustomerWithCompanyUser(CompanyTransfer $companyTransfer): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer();
@@ -141,13 +114,6 @@ class SharedCartsRestApiFacadeTester extends Actor
         return $customerTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $ownerCustomerTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\SpyQuotePermissionGroupEntityTransfer $quotePermissionGroupEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function haveSharedQuote(
         CustomerTransfer $ownerCustomerTransfer,
         CompanyUserTransfer $companyUserTransfer,

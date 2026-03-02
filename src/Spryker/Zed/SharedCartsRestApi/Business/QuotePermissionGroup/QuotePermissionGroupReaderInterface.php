@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface QuotePermissionGroupReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandQuoteWithQuotePermissionGroup(QuoteTransfer $quoteTransfer): QuoteTransfer;
 }

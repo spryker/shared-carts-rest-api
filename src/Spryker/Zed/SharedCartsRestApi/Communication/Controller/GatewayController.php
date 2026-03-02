@@ -19,41 +19,21 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
  */
 class GatewayController extends AbstractGatewayController
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getSharedCartsByCartUuidAction(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         return $this->getFacade()->getSharedCartsByCartUuid($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function createAction(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         return $this->getFacade()->create($shareCartRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function updateAction(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         return $this->getFacade()->update($shareCartRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function deleteAction(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         return $this->getFacade()->delete($shareCartRequestTransfer);

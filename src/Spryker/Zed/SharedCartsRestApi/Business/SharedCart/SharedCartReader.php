@@ -24,10 +24,6 @@ class SharedCartReader implements SharedCartReaderInterface
      */
     protected $sharedCartFacade;
 
-    /**
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToQuoteFacadeInterface $quoteFacade
-     * @param \Spryker\Zed\SharedCartsRestApi\Dependency\Facade\SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
-     */
     public function __construct(
         SharedCartsRestApiToQuoteFacadeInterface $quoteFacade,
         SharedCartsRestApiToSharedCartFacadeInterface $sharedCartFacade
@@ -36,11 +32,6 @@ class SharedCartReader implements SharedCartReaderInterface
         $this->sharedCartFacade = $sharedCartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getSharedCartsByCartUuid(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         $quoteResponseTransfer = $this->quoteFacade->findQuoteByUuid($quoteTransfer);

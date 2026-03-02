@@ -20,19 +20,11 @@ class SharedCartsRestApiStub implements SharedCartsRestApiStubInterface
      */
     protected $zedRequestClient;
 
-    /**
-     * @param \Spryker\Client\SharedCartsRestApi\Dependency\Client\SharedCartsRestApiToZedRequestClientInterface $zedRequestClient
-     */
     public function __construct(SharedCartsRestApiToZedRequestClientInterface $zedRequestClient)
     {
         $this->zedRequestClient = $zedRequestClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getSharedCartsByCartUuid(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareDetailCollectionTransfer $shareDetailCollectionTransfer */
@@ -44,11 +36,6 @@ class SharedCartsRestApiStub implements SharedCartsRestApiStubInterface
         return $shareDetailCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function create(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareCartResponseTransfer $shareCartResponseTransfer */
@@ -60,11 +47,6 @@ class SharedCartsRestApiStub implements SharedCartsRestApiStubInterface
         return $shareCartResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function update(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareCartResponseTransfer $shareCartResponseTransfer */
@@ -76,11 +58,6 @@ class SharedCartsRestApiStub implements SharedCartsRestApiStubInterface
         return $shareCartResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShareCartRequestTransfer $shareCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareCartResponseTransfer
-     */
     public function delete(ShareCartRequestTransfer $shareCartRequestTransfer): ShareCartResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\ShareCartResponseTransfer $shareCartResponseTransfer */

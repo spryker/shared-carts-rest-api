@@ -36,9 +36,6 @@ class QuotePermissionGroupQuoteExpanderPluginTester extends Actor
 {
     use _generated\QuotePermissionGroupQuoteExpanderPluginTesterActions;
 
-    /**
-     * @return void
-     */
     public function setPermissionDependencies(): void
     {
         $this->setDependency(PermissionDependencyProvider::PLUGINS_PERMISSION_STORAGE, [
@@ -53,11 +50,6 @@ class QuotePermissionGroupQuoteExpanderPluginTester extends Actor
         $this->getLocator()->permission()->facade()->syncPermissionPlugins();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function haveCustomerWithCompanyUser(CompanyTransfer $companyTransfer): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer();
@@ -70,13 +62,6 @@ class QuotePermissionGroupQuoteExpanderPluginTester extends Actor
         return $customerTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $ownerCustomerTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\SpyQuotePermissionGroupEntityTransfer $quotePermissionGroupEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function haveSharedQuote(
         CustomerTransfer $ownerCustomerTransfer,
         CompanyUserTransfer $companyUserTransfer,

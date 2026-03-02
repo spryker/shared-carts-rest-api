@@ -27,11 +27,6 @@ class SharedCartsRestApiDependencyProvider extends AbstractBundleDependencyProvi
      */
     protected const EXCEPTION_MESSAGE_MISSING_COMPANY_USER_PROVIDER_PLUGIN = 'Missing instance of %s! You need to configure CompanyUserProviderPlugin in your own SharedCartsRestApiDependencyProvider::getCompanyUserProviderPlugin() to be able share carts.';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -40,11 +35,6 @@ class SharedCartsRestApiDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addCompanyUserProviderPlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_COMPANY_USER_PROVIDER, function (Container $container) {
