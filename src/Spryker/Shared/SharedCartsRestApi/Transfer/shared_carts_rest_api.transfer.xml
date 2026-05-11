@@ -33,6 +33,7 @@
 
     <transfer name="QuotePermissionGroup">
         <property name="idQuotePermissionGroup" type="int"/>
+        <property name="isDefault" type="bool"/>
     </transfer>
 
     <transfer name="QuotePermissionGroupResponse">

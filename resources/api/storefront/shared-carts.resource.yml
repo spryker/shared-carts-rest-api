@@ -1,0 +1,41 @@
+resource:
+    name: SharedCarts
+    shortName: shared-carts
+    description: 'Shared cart permissions for company users'
+
+    paginationEnabled: false
+
+    includableIn:
+        - resource: Carts
+          relationshipName: shared-carts
+
+    properties:
+        uuid:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Unique shared cart identifier'
+
+        idCompanyUser:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Company user UUID the cart is shared with'
+
+        idCartPermissionGroup:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Identifier of the cart permission group granted to the company user'
+
+        cartPermissionGroup:
+            type: CartPermissionGroupsStorefrontResource
+            writable: false
+            readable: true
+            required: false
+            serializedName: cart-permission-groups
+            description: 'Cart permission group granted to the company user'

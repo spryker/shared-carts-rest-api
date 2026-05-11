@@ -18,6 +18,7 @@
         "spryker/zed-request": "^3.7.0"
     },
     "require-dev": {
+        "spryker/api-platform": "^1.0.0",
         "spryker/code-sniffer": "*",
         "spryker/company": "*",
         "spryker/company-business-unit": "*",
@@ -28,6 +29,9 @@
         "spryker/propel": "*",
         "spryker/store": "*",
         "spryker/testify": "*"
+    },
+    "suggest": {
+        "spryker/api-platform": "If you want to expose SharedCartsRestApi resources through the API Platform stack."
     },
     "autoload": {
         "psr-4": {
