@@ -5,10 +5,6 @@ resource:
 
     paginationEnabled: false
 
-    includableIn:
-        - resource: Carts
-          relationshipName: shared-carts
-
     properties:
         uuid:
             type: string
