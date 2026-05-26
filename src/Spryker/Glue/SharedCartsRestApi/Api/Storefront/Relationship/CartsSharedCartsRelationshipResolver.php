@@ -16,6 +16,7 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShareDetailTransfer;
 use Spryker\ApiPlatform\Relationship\AbstractRelationshipResolver;
 use Spryker\Client\SharedCartsRestApi\SharedCartsRestApiClientInterface;
+use Spryker\Service\Serializer\SerializerServiceInterface;
 
 /**
  * Builds `SharedCarts` sub-resources for a `Carts` parent. Mirrors the legacy
@@ -26,6 +27,7 @@ class CartsSharedCartsRelationshipResolver extends AbstractRelationshipResolver
 {
     public function __construct(
         protected SharedCartsRestApiClientInterface $sharedCartsRestApiClient,
+        protected SerializerServiceInterface $serializer,
     ) {
     }
 
@@ -60,33 +62,31 @@ class CartsSharedCartsRelationshipResolver extends AbstractRelationshipResolver
 
     protected function mapShareDetailToResource(ShareDetailTransfer $shareDetailTransfer): SharedCartsStorefrontResource
     {
-        $resource = new SharedCartsStorefrontResource();
-        $resource->uuid = $shareDetailTransfer->getUuid();
-
-        $companyUserTransfer = $shareDetailTransfer->getCompanyUser();
-
-        if ($companyUserTransfer !== null) {
-            $resource->idCompanyUser = $companyUserTransfer->getUuid();
-        }
-
         $quotePermissionGroupTransfer = $shareDetailTransfer->getQuotePermissionGroup();
 
-        if ($quotePermissionGroupTransfer !== null) {
-            $resource->idCartPermissionGroup = $quotePermissionGroupTransfer->getIdQuotePermissionGroup();
-            $resource->cartPermissionGroup = $this->buildCartPermissionGroupResource($quotePermissionGroupTransfer);
-        }
-
-        return $resource;
+        return $this->serializer->denormalize(
+            [
+                'uuid' => $shareDetailTransfer->getUuid(),
+                'idCompanyUser' => $shareDetailTransfer->getCompanyUser()?->getUuid(),
+                'idCartPermissionGroup' => $quotePermissionGroupTransfer?->getIdQuotePermissionGroup(),
+                'cartPermissionGroup' => $quotePermissionGroupTransfer === null
+                    ? null
+                    : $this->buildCartPermissionGroupResource($quotePermissionGroupTransfer),
+            ],
+            SharedCartsStorefrontResource::class,
+        );
     }
 
     protected function buildCartPermissionGroupResource(
         QuotePermissionGroupTransfer $quotePermissionGroupTransfer
     ): CartPermissionGroupsStorefrontResource {
-        $resource = new CartPermissionGroupsStorefrontResource();
-        $resource->idQuotePermissionGroup = $quotePermissionGroupTransfer->getIdQuotePermissionGroup();
-        $resource->name = $quotePermissionGroupTransfer->getName();
-        $resource->isDefault = $quotePermissionGroupTransfer->getIsDefault();
-
-        return $resource;
+        return $this->serializer->denormalize(
+            [
+                'idQuotePermissionGroup' => $quotePermissionGroupTransfer->getIdQuotePermissionGroup(),
+                'name' => $quotePermissionGroupTransfer->getName(),
+                'isDefault' => $quotePermissionGroupTransfer->getIsDefault(),
+            ],
+            CartPermissionGroupsStorefrontResource::class,
+        );
     }
 }

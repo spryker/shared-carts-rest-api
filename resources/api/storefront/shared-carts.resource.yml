@@ -3,7 +3,66 @@ resource:
     shortName: shared-carts
     description: 'Shared cart permissions for company users'
 
+    processor: Spryker\Glue\SharedCartsRestApi\Api\Storefront\Processor\SharedCartsStorefrontProcessor
+
+    security: "is_granted('ROLE_CUSTOMER')"
+
     paginationEnabled: false
+
+    operations:
+        - type: Post
+          uriTemplate: '/carts/{cartId}/shared-carts'
+          uriVariables:
+              cartId:
+                  identifiers: [cartId]
+          openapiContext:
+              responses:
+                  201:
+                      description: 'Cart shared with the company user.'
+                  400:
+                      description: 'Cart uuid is missing.'
+                  403:
+                      description: 'Sharing is forbidden — cart not owned, or company user from a different company.'
+                  404:
+                      description: 'Cart or company user not found.'
+                  422:
+                      description: 'Validation failed or sharing failed.'
+
+        - type: Patch
+          uriTemplate: '/shared-carts/{uuid}'
+          uriVariables:
+              uuid:
+                  identifiers: [uuid]
+          read: false
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Permission group updated.'
+                  400:
+                      description: 'Shared cart id is missing.'
+                  403:
+                      description: 'Unauthorized request.'
+                  404:
+                      description: 'Shared cart not found.'
+                  422:
+                      description: 'Validation failed or permission group not found.'
+
+        - type: Delete
+          uriTemplate: '/shared-carts/{uuid}'
+          uriVariables:
+              uuid:
+                  identifiers: [uuid]
+          read: false
+          openapiContext:
+              responses:
+                  204:
+                      description: 'Shared cart removed.'
+                  400:
+                      description: 'Shared cart id is missing.'
+                  403:
+                      description: 'Unauthorized request.'
+                  404:
+                      description: 'Shared cart not found.'
 
     properties:
         uuid:
@@ -13,20 +72,35 @@ resource:
             readable: true
             required: false
             description: 'Unique shared cart identifier'
+            openapiContext:
+                example: '3fec586e-92f6-5692-a98b-dfca29cd2e16'
+
+        cartId:
+            type: string
+            writable: false
+            readable: false
+            required: false
+            description: 'Parent cart UUID, taken from the URL.'
+            openapiContext:
+                example: '1ce91011-8d60-59ef-9fe0-4493ef36c4f0'
 
         idCompanyUser:
             type: string
-            writable: false
+            writable: true
             readable: true
             required: false
             description: 'Company user UUID the cart is shared with'
+            openapiContext:
+                example: '8a14ba51-3fd1-5b35-9b75-f7d1bf09c0c8'
 
         idCartPermissionGroup:
             type: integer
-            writable: false
+            writable: true
             readable: true
-            required: false
-            description: 'Identifier of the cart permission group granted to the company user'
+            required: true
+            description: 'Identifier of the cart permission group granted to the company user. Required for both POST and PATCH.'
+            openapiContext:
+                example: 1
 
         cartPermissionGroup:
             type: CartPermissionGroupsStorefrontResource
