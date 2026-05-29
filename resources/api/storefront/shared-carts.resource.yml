@@ -64,6 +64,17 @@ resource:
                   404:
                       description: 'Shared cart not found.'
 
+    includes:
+        - relationshipName: cart-permission-groups
+          targetResource: CartPermissionGroups
+          resolverClass: Spryker\Glue\CartPermissionGroupsRestApi\Api\Storefront\Relationship\SharedCartsCartPermissionGroupsRelationshipResolver
+
+        - relationshipName: company-users
+          targetResource: CompanyUsers
+          uriTemplate: /company-users/{uuid}
+          uriVariableMappings:
+              idCompanyUser: uuid
+
     properties:
         uuid:
             type: string
