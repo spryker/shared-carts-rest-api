@@ -15,11 +15,15 @@ use Symfony\Component\HttpFoundation\Response;
 class SharedCartsRestApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_SHARED_CARTS = 'shared-carts';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESOURCE_CARTS
      *
      * @var string
@@ -27,6 +31,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESOURCE_CARTS = 'carts';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESPONSE_CODE_CART_NOT_FOUND
      *
      * @var string
@@ -34,6 +40,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_CODE_CART_NOT_FOUND = '101';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartPermissionGroupsRestApi\CartPermissionGroupsRestApiConfig::RESPONSE_CODE_CART_PERMISSION_GROUP_NOT_FOUND
      *
      * @var string
@@ -41,6 +49,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_CODE_CART_PERMISSION_GROUP_NOT_FOUND = '2501';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::RESPONSE_CODE_CART_ID_MISSING
      *
      * @var string
@@ -48,6 +58,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_CODE_CART_ID_MISSING = '104';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig::RESPONSE_CODE_COMPANY_USER_NOT_FOUND
      *
      * @var string
@@ -55,36 +67,50 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_CODE_COMPANY_USER_NOT_FOUND = '1404';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_SHARING_CART_FORBIDDEN = '2701';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_FAILED_TO_SHARE_CART = '2702';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_SHARE_CART_OUTSIDE_THE_COMPANY_FORBIDDEN = '2703';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_SHARED_CART_ID_MISSING = '2704';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_SHARED_CART_NOT_FOUND = '2705';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_CODE_FAILED_TO_SAVE_SHARED_CART = '2706';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::EXCEPTION_MESSAGE_CART_WITH_ID_NOT_FOUND
      *
      * @var string
@@ -92,6 +118,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const EXCEPTION_MESSAGE_CART_WITH_ID_NOT_FOUND = 'Cart with given uuid not found.';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartPermissionGroupsRestApi\CartPermissionGroupsRestApiConfig::RESPONSE_DETAIL_CART_PERMISSION_GROUP_NOT_FOUND
      *
      * @var string
@@ -99,6 +127,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_DETAIL_CART_PERMISSION_GROUP_NOT_FOUND = 'Cart permission group not found.';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CartsRestApi\CartsRestApiConfig::EXCEPTION_MESSAGE_CART_ID_MISSING
      *
      * @var string
@@ -106,6 +136,8 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const EXCEPTION_MESSAGE_CART_ID_MISSING = 'Cart uuid is missing.';
 
     /**
+     * @api
+     *
      * @uses \Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig::RESPONSE_DETAIL_COMPANY_USER_NOT_FOUND
      *
      * @var string
@@ -113,31 +145,43 @@ class SharedCartsRestApiConfig extends AbstractBundleConfig
     public const RESPONSE_DETAIL_COMPANY_USER_NOT_FOUND = 'Company user not found';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_SHARING_CART_FORBIDDEN = 'Action is forbidden.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_FAILED_TO_SHARE_CART = 'Failed to share a cart.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_SHARE_CART_OUTSIDE_THE_COMPANY_FORBIDDEN = 'Cart can be shared only with company users from same company.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_SHARED_CART_ID_MISSING = 'Shared cart id is missing.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_SHARED_CART_NOT_FOUND = 'Shared cart not found.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESPONSE_DETAIL_FAILED_TO_SAVE_SHARED_CART = 'Failed to save shared cart.';
