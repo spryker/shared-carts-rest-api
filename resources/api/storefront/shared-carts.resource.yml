@@ -20,7 +20,7 @@ resource:
                   201:
                       description: 'Cart shared with the company user.'
                   400:
-                      description: 'Cart uuid is missing.'
+                      description: 'Request body missing or not decodable.'
                   403:
                       description: 'Sharing is forbidden — cart not owned, or company user from a different company.'
                   404:
@@ -39,7 +39,7 @@ resource:
                   200:
                       description: 'Permission group updated.'
                   400:
-                      description: 'Shared cart id is missing.'
+                      description: 'Request body not decodable.'
                   403:
                       description: 'Unauthorized request.'
                   404:
@@ -57,8 +57,6 @@ resource:
               responses:
                   204:
                       description: 'Shared cart removed.'
-                  400:
-                      description: 'Shared cart id is missing.'
                   403:
                       description: 'Unauthorized request.'
                   404:
