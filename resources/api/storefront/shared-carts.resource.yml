@@ -48,6 +48,9 @@ resource:
                       description: 'Validation failed or permission group not found.'
 
         - type: Delete
+          extraProperties:
+              notFoundCode: '2705'
+              notFoundMessage: 'Shared cart not found.'
           uriTemplate: '/shared-carts/{uuid}'
           uriVariables:
               uuid:
