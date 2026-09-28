@@ -119,5 +119,6 @@ resource:
             writable: false
             readable: true
             required: false
+            responseOptional: true
             serializedName: cart-permission-groups
-            description: 'Cart permission group granted to the company user'
+            description: 'Cart permission group granted to the company user. Resolved only where a shared cart is rendered as a relationship of a cart (`GET /carts?include=shared-carts`); the shared-carts operations themselves answer the identifier in `idCartPermissionGroup`.'
