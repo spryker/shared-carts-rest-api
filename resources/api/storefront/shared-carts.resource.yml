@@ -99,9 +99,10 @@ resource:
         idCompanyUser:
             type: string
             writable: true
+            writableOn: ['Post']
             readable: true
             required: false
-            description: 'Company user UUID the cart is shared with'
+            description: 'Company user UUID the cart is shared with. Set on POST only; PATCH changes the permission group and ignores it.'
             openapiContext:
                 example: '8a14ba51-3fd1-5b35-9b75-f7d1bf09c0c8'
 
