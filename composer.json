@@ -23,9 +23,11 @@
         "spryker/company": "*",
         "spryker/company-business-unit": "*",
         "spryker/company-user": "*",
+        "spryker/company-users-rest-api": "*",
         "spryker/container": "*",
         "spryker/customer": "*",
         "spryker/permission": "*",
+        "spryker/price": "*",
         "spryker/propel": "*",
         "spryker/store": "*",
         "spryker/testify": "*"
@@ -35,7 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Spryker\\": "src/Spryker/"
+            "Spryker\\": "src/Spryker/",
+            "SprykerTest\\Glue\\SharedCartsRestApi\\Helper\\": "tests/SprykerTest/Glue/SharedCartsRestApi/_support/Helper/"
         }
     },
     "autoload-dev": {
